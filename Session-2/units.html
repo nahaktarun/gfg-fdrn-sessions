@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS</title>
+  </head>
+  <style>
+    .pixels {
+      font-size: 16px;
+    }
+    .inches {
+      font-size: 0.5in;
+    }
+    .em {
+      font-size: 1.2em;
+      /* 1px = 1em/16
+      1.2em = 19.2px
+      */
+    }
+    .rem {
+      font-size: 1.2rem;
+    }
+    .percent {
+      width: 80%;
+    }
+  </style>
+  <body>
+    <header>
+      <h1>CSS Units</h1>
+    </header>
+    <main>
+      <!-- 1. Absolute unit -->
+      <section>
+        <h2>Absolute unit</h2>
+        <p class="pixels">This text is from pixel</p>
+        <p class="inches">This text in inches</p>
+      </section>
+      <!-- 2. Relative unit -->
+      <section>
+        <h2>Relative units</h2>
+        <p class="em">This text using em</p>
+        <p class="rem">this is root em</p>
+        <!-- 3. Percentage -->
+        <div class="percent">
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veritatis
+            sit molestiae eius nihil enim rerum, dignissimos ad nam tenetur amet
+            nemo magni fuga, repudiandae obcaecati sunt ab voluptates nesciunt
+            consequatur id explicabo! Deleniti expedita molestias maiores ad
+            rerum animi dolorum?
+          </p>
+        </div>
+        <!-- 4.vh-->
+      </section>
+    </main>
+  </body>
+</html>
