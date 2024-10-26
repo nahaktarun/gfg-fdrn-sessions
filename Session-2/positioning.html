@@ -6,27 +6,60 @@
     <title>Document</title>
   </head>
   <style>
-    /* .relative {
+    .container {
+      margin: 20px;
+      padding: 20px;
+      background-color: #f0f0f0;
+      height: 200px;
       position: relative;
+    }
+    .box {
+      width: 100px;
+      height: 100px;
+      padding: 10px;
+      text-align: center;
+      color: tomato;
+    }
+    .static-box {
+      background-color: aqua;
+      position: static;
+    }
+    .relative-box {
+      position: relative;
+      background-color: blueviolet;
       top: 20px;
-      bottom: 20px;
-      background-color: aliceblue;
-    } */
-    .absolute {
+      left: 40px;
+    }
+    .absolute-box {
       position: absolute;
-      top: 50px;
-      bottom: 50px;
+      background-color: beige;
+      top: 200px;
+      left: 40px;
+    }
+    .fixed-box {
+      position: fixed;
+      background-color: burlywood;
     }
   </style>
   <body>
     <!-- 1. static (Default type) -->
-    <p class="static">Lorem ipsum dolor sit amet consectetur.</p>
-    <p class="relative">Lorem ipsum dolor sit amet consectetur.</p>
+    <div class="container">
+      <div class="box static-box">Static box / normal box</div>
+      <!-- <div class="box static-box">Lorem, ipsum</div> -->
+    </div>
 
-    <p class="absolute">Lorem ipsum dolor sit amet consectetur absolute unit</p>
+    <!-- 2. Relative  -->
+    <div class="container">
+      <div class="box relative-box">Relative box</div>
+      <div class="box relative-box">Relative box</div>
+      <div class="box relative-box">Relative box</div>
+    </div>
 
-    <p class="fixed">Lorem ipsum dolor sit amet consectetur.</p>
-
-    <p class="sticky">Lorem ipsum dolor sit amet consectetur.</p>
+    <div class="container">
+      <div class="box absolute-box">Absolute box</div>
+    </div>
+    <div class="container">
+      <div class="box fixed-box">Fixed box</div>
+    </div>
   </body>
 </html>
