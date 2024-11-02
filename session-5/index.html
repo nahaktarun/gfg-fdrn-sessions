@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 id="title">Hi there</h1>
+    <p class="content">This is a General paragraph</p>
+    <button id="changeButton">Change Button</button>
+    <p class="content">This is a General paragraph 2</p>
+  </body>
+  <!-- <script src="3_DOM_manipulation.js"></script> -->
+  <script>
+    let titleValue = document.getElementById("title");
+    console.log(titleValue.textContent);
+
+    let paragraph = document.querySelectorAll(".content");
+    console.log(paragraph);
+
+    let button = document.getElementById("changeButton");
+    button.addEventListener("click", toDO);
+
+    function toDO() {
+      titleValue.textContent = "Dom updated from button click";
+      paragraph.textContent = "The paragraph is changed with the button click";
+    }
+  </script>
+</html>
