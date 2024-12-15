@@ -1,3 +1,4 @@
+import { mealApi } from "../../services/mealApi";
 import * as types from "./mealActionType";
 
 // action creators
@@ -15,8 +16,33 @@ export const fetchMealFailure = (error) => ({
   payload: error,
 });
 
+export const selectMeal = (meal) => ({
+  type: types.SELECT_MEAL,
+  payload: meal,
+});
+
 export const fetchMealByCategory = (category) => {
   return async (dispatch) => {
     dispatch(fetchMealRequest());
+    try {
+      const meals = await mealApi.getMealsByCategory(category);
+      await dispatch(fetchMealSuccess(meals));
+      console.log(category);
+    } catch (error) {
+      dispatch(fetchMealFailure(error.message));
+    }
+  };
+};
+
+export const fetchMealDetails = (mealId) => {
+  return async (dispatch) => {
+    dispatch(fetchMealRequest());
+
+    try {
+      const mealDetails = await mealApi.getMealDetail(mealId);
+      await dispatch(selectMeal(mealDetails));
+    } catch (error) {
+      dispatch(fetchMealFailure(error.message));
+    }
   };
 };

@@ -12,4 +12,13 @@ export const mealApi = {
       throw error;
     }
   },
+  async getMealDetail(mealId) {
+    try {
+      const response = await axios.get(`${BASE_URL}/lookup.php?i=${mealId}`);
+      return response.data.meals[0];
+    } catch (error) {
+      console.log("Error meal details not found", error);
+      throw error;
+    }
+  },
 };
