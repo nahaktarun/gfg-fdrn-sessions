@@ -13,7 +13,7 @@ export const getAllBooksC = (req, res) => {
 export const getABookByIdC = (req, res) => {
   const book = getBookById(req.params.bookId);
   if (!book) {
-    return res.json({ error: "Book not found" });
+    return res.status(404).json({ error: "Book not found" });
   }
   return res.json(book);
 };
