@@ -1,48 +1,32 @@
-let books = [
-  {
-    id: 1,
-    name: "Alice",
-    author: "Alice",
-  },
-  {
-    id: 2,
-    name: "Bob",
-    author: "Bob",
-  },
-];
+import Book from "../models/Book.js";
 
-export const getAllBooks = () => books;
+export const getAllBooks = async () => {
+  const books = await Book.find({});
+  return books;
+};
 
-export const getBookById = (bookId) => {
-  const allBooks = getAllBooks();
-  const book = allBooks.find((book) => book.id === parseInt(bookId));
+export const getBookById = async (bookId) => {
+  const book = await Book.findById(bookId);
   return book;
 };
 // console.log('1' === 1)  FALSE
-export const createBookSVC = (book) => {
-  const newBook = {
-    id: books.length + 1,
-    ...book,
-  };
-  books.push(newBook);
-  return newBook;
+export const createBookSVC = async (bookData) => {
+  const book = new Book(bookData);
+  const saved = await book.save();
+  if (saved) {
+    return book;
+  }
 };
 
-export const updateBookSVC = (bookId, book) => {
-  const bookIndex = books.findIndex((b) => b.id === parseInt(bookId));
-  if (bookIndex === -1) return null;
-
-  books[bookIndex] = {
-    id: parseInt(bookId),
-    ...book,
-  };
-  console.log("Inside service");
-  console.log(books[bookIndex]);
-  return books[bookIndex];
+export const updateBookSVC = async (bookId, book) => {
+  return await Book.findByIdAndUpdate(bookId, book, {
+    new: true,
+    runValidators: true,
+  });
 };
 
-export const deleteSVC = (bookId) => {
-  const noOfBooks = books.length;
-  books = books.filter((book) => book.id !== parseInt(bookId));
-  return noOfBooks > books.length;
+export const deleteSVC = async (bookId) => {
+  return await Book.findByIdAndDelete(bookId);
 };
+
+// MERN -> Mongodb , Express, React, node.
